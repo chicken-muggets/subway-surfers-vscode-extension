@@ -1,0 +1,73 @@
+{
+  "name": "brainrot-watcher",
+  "displayName": "Brainrot Watcher",
+  "description": "allows you to see Subway Surfers gameplay directly in vscode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mainViewContainer",
+          "title": "Watch brainrot",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mainViewContainer": [
+        {
+          "id": "watchBrainrot",
+          "name": "Watch brainrot"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "brainrot-watcher.getVideoHtml",
+          "group": "navigation",
+          "when": "view == watchBrainrot"
+        },
+        {
+          "command": "brainrot-watcher.showAnotherVideo",
+          "group": "other",
+          "when": "view == watchBrainrot"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "brainrot-watcher.getVideoHtml",
+        "title": "Show Video"
+      },
+      {
+        "command": "brainrot-watcher.showAnotherVideo",
+        "title": "Show Another Video"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.89.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.3.9"
+  }
+}
